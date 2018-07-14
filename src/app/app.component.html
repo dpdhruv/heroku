@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <form class="mt-3">
+    <div class="form-group form-inline">
+        <input class="form-control rounded-0" autocomplete="off" name="cat" placeholder="Search your interest" [(ngModel)]="category" type="text">
+        <button class="btn btn-dark rounded-0" (click)="get_material()">Search</button>
+    </div>
+  </form>
+  
+  <div class="row">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+      <div class="col-md-12">
+          <span id="tag_name" (click)="get(i)" *ngFor="let t of tag index as i" class="badge badge-secondary p-1 m-1" style="cursor: pointer;">
+            <span>{{t.tag.tag_name}}</span>
+          </span>
+        </div>
+       
+    <div *ngFor="let a of container" class="col-md-4 p-3">
+
+     <a  href="{{a.video.embed_url}}" target="_blank"> 
+        <div  class="card bg-light text-dark" >
+          <div>
+              <img class="card-img-top img-fluid .img-thumbnail" src="{{a.video.thumb}}" alt="">
+              <p class="card-title font-weight-bold pt-3 pb-0">{{a.video.title}}</p>
+              <span class="card-text text-info">Duration:{{a.video.duration}}</span>
+              <br>
+              <span class="text-info pt-1 float-left">Views:{{a.video.views}}</span>
+              <span class="text-info pt-1 float-right">{{a.video.publish_date | date}}</span>
+          </div>
+        </div>
+      </a>  
+    </div>
+ 
+      <div *ngIf="isEmpty" class="alert alert-danger mt-4 mb-4 col-lg-12 text-center">
+        <p class="text-dark text-center font-weight-bold">Sorry Nothing Found!!!</p>
+      </div>
+ 
+  </div>
+  
+  <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link"  (click)="update_page()"  href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+</div>  
