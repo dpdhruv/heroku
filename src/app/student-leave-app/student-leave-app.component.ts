@@ -58,7 +58,7 @@ export class StudentLeaveAppComponent implements OnInit {
    // console.log(this.authservice.activeStudentKey);
   }
 
- private submitApplication(data){
+ public submitApplication(data){
     this.id = this.authservice.activeStudentKey;
     this.status = "Pending";
     this.uniqueId = this.id + Math.floor(Math.random()*10000);
