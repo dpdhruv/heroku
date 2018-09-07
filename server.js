@@ -5,10 +5,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'dist/heroku')));
+app.use(express.static(path.join(__dirname, 'dist/egovernance')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/dist/heroku/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/egovernance/index.html'));
 });
 
 const port = process.env.PORT || 3000;
